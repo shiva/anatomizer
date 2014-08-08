@@ -1,0 +1,16 @@
+grammar me.shiv.dsl.Anatomy with org.eclipse.xtext.common.Terminals
+
+generate anatomy "http://www.shiv.me/dsl/Anatomy"
+
+Model:
+	'@startpa' (shipments+=Shipment)+ '@endpa';
+	
+Shipment:
+	'shipment' name=ID '{'
+		(workPackages+=WorkPackage)+
+	'}'
+;
+
+WorkPackage:
+	'wp' name=ID ',' desc=STRING ('->' dep=ID)?
+;
