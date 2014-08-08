@@ -1,5 +1,6 @@
 Anatomizer
 ==========
 
-A tool to make [project anatomies](http://en.wikipedia.org/wiki/Project_anatomy). It comes with simple syntax to specify shipments and work packages, and specifying dependencies between them. Execute the provided program, to generate PNG diagram from the input syntax.
+A tool to make [project anatomies][1]. It comes with simple syntax to specify shipments and work packages, and specifying dependencies between them. Execute the provided program, to generate PNG diagram from the input syntax.
 
+[1] : http://en.wikipedia.org/wiki/Project_anatomy
