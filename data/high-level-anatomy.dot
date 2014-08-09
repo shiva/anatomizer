@@ -1,0 +1,108 @@
+digraph G {
+    graph [center=1 rankdir=LR];
+    node [shape=box];
+
+    subgraph cluster_0 {
+        label = "Design Phase";
+        color=blue;
+
+        { rank=same; WP1_40, WP1_50, WP1_100, WP1_110; }
+        WP1_10[label="Component API Definitions"];
+        WP1_20[label="Identify Full Set of MDI Features"];
+        WP1_30[label="Define deliverables for Migration Start"];
+        WP1_35[label="Componentize Existing OMI and re-brand to MDI"];
+        WP1_37[label="Build and Test Env in MDI Components"];
+        WP1_40[label="MOMR Spec Validation"];
+        WP1_50[label="IML Spec Validation"];
+        WP1_60[label="Operation use-cases for variation in data-organization"];
+        WP1_70[label="Meta-data Definition"];
+        WP1_80[label="Type-System Definition"];
+        WP1_90[label="Meta-data in XML format"];
+        WP1_100[label="RT Design Validation"];
+        WP1_110[label="Meta-data Design Validation"];
+        WP1_120[label="Execution Ready"];
+
+        
+        WP1_10 -> WP1_100;
+        WP1_60 -> WP1_100;
+        WP1_70 -> WP1_90;
+        WP1_90 -> WP1_110;
+        WP1_80 -> WP1_100;
+        WP1_35 -> WP1_37;
+        WP1_37 -> WP1_120;
+        WP1_100 -> WP1_120;
+        WP1_110 -> WP1_120;
+
+    }
+
+    subgraph cluster_1 {
+        label = "Shipment 1 - Single MO with 1 Attribute (Tracer)";
+        node [shape=box];
+
+        { rank=same; WP2_10, WP2_40, WP2_60, WP2_130; }
+        WP2_10[label="CAL Adapter"];
+        WP2_20[label="MDCL Engine"];
+        WP2_30[label="MDCL Op Storage"];
+        WP2_40[label="Parsers"];
+        WP2_50[label="Meta DB"];
+        WP2_60[label="CCDB Store"];
+        WP2_70[label="CCDB Transport"];
+        WP2_80[label="CCDB RCM Mgr"];
+        WP2_90[label="CCDB-RDB System Integration"];
+        WP2_100[label="CAL-CCDB System Integration"];
+        WP2_130[label="MOMR and IML Reference"];
+        WP2_150[label="Demo"];
+
+        WP2_10 -> WP2_20;
+        WP2_20 -> WP2_30;
+        WP2_30 -> WP2_100;
+
+        WP2_40 -> WP2_50;
+        WP2_50 -> WP2_100;
+
+        WP2_60 -> WP2_70;
+        WP2_60 -> WP2_100;
+        WP2_70 -> WP2_80;
+        WP2_80 -> WP2_90;
+        
+        WP2_130 -> WP2_20;
+
+        WP2_100 -> WP2_150;
+   }
+
+    subgraph cluster_2 {
+        label = "Shipment 2 - TBD";
+        node [shape=box];
+
+        WP3_110[label="MOMR User Guide"];
+        WP3_120[label="IML User Guide"];
+        WP3_150[label="Migration Developer Guide"];
+        WP3_UNKNOWN[label="TBD"];
+    
+        WP3_110 -> WP3_150;
+        WP3_120 -> WP3_150;
+    }
+
+    subgraph cluster_3 {
+        label = "Shipment ... ";
+        node [shape=box];
+
+        WP4_UNKNOWN[label="..."];
+    }
+
+
+    WP1_120 -> WP2_10;
+    WP1_120 -> WP2_40;
+    WP1_120 -> WP2_60;
+    WP1_40 -> WP2_130;
+    WP1_50 -> WP2_130;
+    WP1_110 -> WP2_130;
+
+    WP2_90 -> WP3_UNKNOWN;
+    WP2_150 -> WP3_UNKNOWN;
+    WP2_130 -> WP3_110;
+    WP2_130 -> WP3_120;
+
+    WP3_150 -> WP4_UNKNOWN;
+    WP3_UNKNOWN -> WP4_UNKNOWN;
+}
